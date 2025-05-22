@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wallet Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white text-black font-sans">
+
+    <!-- Modal Container -->
+    <div class="flex items-center justify-center min-h-screen">
+      <div class="flex w-full max-w-4xl border rounded-xl shadow-lg overflow-hidden">
+
+        <!-- Left Panel - Wallet List -->
+        <div class="w-1/2 bg-white border-r p-6 space-y-4">
+          <h2 class="text-xl font-semibold mb-4">Select Wallet</h2>
+
+          <!-- Wallet Options -->
+          <a  href="connect.html" ><div class="flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded-md">
+            <img src="image/metamask.png" alt="MetaMask" class="w-8 h-8" />
+            <span class="text-sm">MetaMask</span>
+            <span class="ml-auto text-xs text-gray-500">Installed</span>
+          </div></a>
+          <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded-md">
+            <img src="image/ronin.png" alt="Ronin" class="w-8 h-8" />
+            <span class="text-sm">Ronin Wallet</span>
+            <span class="ml-auto text-xs text-gray-500">Installed</span>
+          </div>
+          <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded-md">
+            <img src="image/phantom.png" alt="Phantom" class="w-8 h-8" />
+            <span class="text-sm">Phantom</span>
+            <span class="ml-auto text-xs text-gray-500">Installed</span>
+          </div>
+          <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded-md">
+            <img src="image/trustwallet.png" alt="Trust Wallet" class="w-8 h-8" />
+            <span class="text-sm">Trust Wallet</span>
+            <span class="ml-auto text-xs text-gray-500">Installed</span>
+          </div>
+
+          <!-- All Wallets -->
+          <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded-md">
+            <div class="w-8 h-8 bg-gray-200 rounded flex items-center justify-center text-gray-600 font-bold">••</div>
+            <span class="text-sm">All Wallets</span>
+            <span class="ml-auto text-xs bg-gray-100 px-2 py-0.5 rounded-full text-gray-500">500+</span>
+          </div>
+        </div>
+
+        <!-- Right Panel - Info Section -->
+        <div class="w-1/2 bg-white p-8 flex flex-col items-center justify-center relative">
+          <button onclick="alert('Close modal')" class="absolute top-4 right-4 text-gray-400 hover:text-black text-xl font-bold">&times;</button>
+          <img src="image/globe.png" alt="Globe" class="w-24 h-24 mb-6" />
+          <h3 class="text-lg font-semibold text-center">Welcome to WEB3CONNECT</h3>
+          <p class="text-gray-500 mt-2 text-center">Connect a wallet to get started</p>
+          <a href="#" class="text-cyan-500 mt-2 text-sm hover:underline">New to wallets?</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

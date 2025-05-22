@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Settings Page</title>
+  <title>W3Connect - Settings</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link
     rel="stylesheet"
@@ -18,7 +18,7 @@
           <img src="image/allan.jpg" class="w-10 h-10 rounded-full" alt="Avatar">
           <div>
             <p class="font-semibold">Allan</p>
-            <p class="text-sm text-gray-500">0x...099c</p>
+            <p class="text-sm text-gray-500">0x...45235</p>
           </div>
         </div>
         <nav class="mt-4 space-y-4 pl-6">
@@ -26,12 +26,12 @@
           <a href="#" class="block text-gray-800 hover:font-semibold">Profile</a>
           <a href="earnings.html" class="block text-gray-800 hover:font-semibold">Earnings</a>
           <a href="organization.html" class="block text-gray-800 hover:font-semibold">Organizations</a>
-          <a href="Settings.html" class="block text-gray-800 font-semibold text-blue-600">Settings</a>
+          <a href="Settings.html" class="block text-gray-800 font-semibold">Settings</a>
         </nav>
       </div>
-      <div class="p-6">
+      <a href="login.html"><div class="p-6">
         <button class="w-full bg-red-400 hover:bg-red-500 text-white py-2 rounded">Disconnect Wallet</button>
-      </div>
+      </div></a>
     </aside>
 
     <!-- Left Sidebar -->
@@ -47,85 +47,446 @@
         />
       </form>
       <nav class="flex flex-col space-y-3 text-sm font-normal">
-        <a href="#" class="flex justify-between items-center text-gray-900 hover:underline">
+        <a href="#" onclick="loadContent('account')" class="flex justify-between items-center text-gray-900 hover:underline">
           <span>Your account</span>
           <i class="fas fa-chevron-right text-gray-500"></i>
         </a>
-        <a href="#" class="flex justify-between items-center text-gray-900 hover:underline">
-          <span>Security and account access</span>
+        <a href="#" onclick="loadContent('security')" class="flex justify-between items-center text-gray-900 hover:underline">
+          <span>Security and Account Access</span>
           <i class="fas fa-chevron-right text-gray-500"></i>
         </a>
-        <a href="#" class="flex justify-between items-center text-gray-900 hover:underline">
-          <span>Privacy and safety</span>
+        <a href="#" onclick="loadContent('privacy')" class="flex justify-between items-center text-gray-900 hover:underline">
+          <span>Privacy and Safety</span>
           <i class="fas fa-chevron-right text-gray-500"></i>
         </a>
-        <a href="#" class="flex justify-between items-center text-gray-900 hover:underline">
+        <a href="#" onclick="loadContent('notifications')" class="flex justify-between items-center text-gray-900 hover:underline">
           <span>Notifications</span>
           <i class="fas fa-chevron-right text-gray-500"></i>
         </a>
-        <a href="#" class="flex justify-between items-center text-gray-900 hover:underline">
-          <span>Accessibility, display, and languages</span>
+        <a href="#" onclick="loadContent('display')" class="flex justify-between items-center text-gray-900 hover:underline">
+          <span>Accessibility, Display, and Languages</span>
           <i class="fas fa-chevron-right text-gray-500"></i>
         </a>
-        <a href="#" class="flex justify-between items-center text-gray-900 hover:underline">
+        <a href="#" onclick="loadContent('help')" class="flex justify-between items-center text-gray-900 hover:underline">
           <span>Help Center</span>
-          <i class="fas fa-external-link-alt text-gray-500"></i>
+          <i class="fas fa-chevron-right text-gray-500"></i>
         </a>
       </nav>
     </aside>
 
     <!-- Right Content -->
-    <main class="flex-1 p-6 border-l border-gray-300 bg-white">
-      <h2 class="font-bold text-lg mb-2">Your Account</h2>
+    <main id="settingsContent" class="flex-1 p-6 border-l border-gray-300 bg-white">
+      <h2 class="font-bold text-lg mb-2">Choose what settings you want to access.</h2>
       <p class="text-gray-600 text-xs max-w-xl mb-6">
-        See information about your account, download an archive of your data, or learn about your account deactivation options
+        Click on the left side panel to view all the other settings you can modify.
       </p>
-      <section class="flex flex-col space-y-6 max-w-xl">
-        <a href="#" class="flex items-start space-x-3 group">
-          <i class="fas fa-user text-gray-500 mt-1 w-5"></i>
-          <div class="flex-1 border-b border-gray-300 pb-3">
-            <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Account information</h3>
-            <p class="text-gray-600 text-xs mt-1">
-              See your account information like your phone number and email address.
-            </p>
-          </div>
-          <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
-        </a>
-
-        <a href="#" class="flex items-start space-x-3 group">
-          <i class="fas fa-key text-gray-500 mt-1 w-5"></i>
-          <div class="flex-1 border-b border-gray-300 pb-3">
-            <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Change your password</h3>
-            <p class="text-gray-600 text-xs mt-1">
-              Change your password at any time.
-            </p>
-          </div>
-          <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
-        </a>
-
-        <a href="#" class="flex items-start space-x-3 group">
-          <i class="fas fa-download text-gray-500 mt-1 w-5"></i>
-          <div class="flex-1 border-b border-gray-300 pb-3">
-            <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Download an archive of your data</h3>
-            <p class="text-gray-600 text-xs mt-1">
-              Get insights into the type of information stored for your account.
-            </p>
-          </div>
-          <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
-        </a>
-
-        <a href="#" class="flex items-start space-x-3 group">
-          <i class="fas fa-heart text-gray-500 mt-1 w-5"></i>
-          <div class="flex-1 border-b border-gray-300 pb-3">
-            <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Deactivate your account</h3>
-            <p class="text-gray-600 text-xs mt-1">
-              Find out how you can deactivate your account.
-            </p>
-          </div>
-          <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
-        </a>
-      </section>
+      
     </main>
   </div>
+  <script>
+    function loadContent(section) {
+      const container = document.getElementById("settingsContent");
+
+      const contentMap = {
+        account: `
+          <h2 class="font-bold text-lg mb-2">Your Account</h2>
+          <p class="text-gray-600 text-xs max-w-xl mb-6">
+            Manage your account, data, and deactivation options.
+          </p>
+
+          <div class="max-w-xl">
+            <section class="flex flex-col space-y-6">
+              <!-- Account Information -->
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-user-circle text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Account information</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    See your account information like your name, wallet addresses, and connected wallets.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+
+              <!-- Download Data -->
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-database text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Download an archive of your data</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    Get insights into the type of information stored for your account.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+
+              <!-- Deactivate Account -->
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-user-slash text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Deactivate your account</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    Find out how you can deactivate your account.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+            </section>
+          </div>
+        `,  
+        security: `
+          <h2 class="font-bold text-lg mb-2">Security & Account Access</h2>
+          <p class="text-gray-600 text-xs max-w-xl mb-6">
+            Manage your password, 2FA, and login history.
+          </p>
+
+          <div class="max-w-xl">
+            <section class="flex flex-col space-y-6">
+              <!-- Security -->
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-shield-alt text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Security</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    Manage your account's security.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+
+              <!-- Apps and Sessions -->
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-mobile-alt text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Apps and sessions</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    See information about when you logged into your account and the apps you connected to your account.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+
+              <!-- Connected Accounts -->
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-link text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Connected wallets</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    Manage connected wallets used to log in.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+            </section>
+          </div>
+        `,
+        privacy: `
+          <h2 class="font-bold text-lg mb-2">Privacy & Safety</h2>
+          <p class="text-gray-600 text-xs max-w-xl mb-6">
+            Control your discoverability and content preferences.
+          </p>
+
+            <div class="max-w-xl">
+              <h2 class="font-bold text-lg mb-2">Your W3Connect activity</h2>
+
+              <section class="flex flex-col space-y-6 max-w-xl mt-6">
+                <!-- Audience, media and tagging -->
+                <a href="#" class="flex items-start space-x-3 group">
+                  <i class="fas fa-users text-gray-500 mt-1 w-5"></i>
+                  <div class="flex-1 border-b border-gray-300 pb-3">
+                    <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Audience, media and tagging</h3>
+                    <p class="text-gray-600 text-xs mt-1">
+                      Manage what information you allow other people on W3Connect to see.
+                    </p>
+                  </div>
+                  <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+                </a>
+
+                <!-- Your posts -->
+                <a href="#" class="flex items-start space-x-3 group">
+                  <i class="fas fa-comment-alt text-gray-500 mt-1 w-5"></i>
+                  <div class="flex-1 border-b border-gray-300 pb-3">
+                    <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Your posts</h3>
+                    <p class="text-gray-600 text-xs mt-1">
+                      Manage the information associated with your posts.
+                    </p>
+                  </div>
+                  <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+                </a>
+
+                <!-- Content you see -->
+                <a href="#" class="flex items-start space-x-3 group">
+                  <i class="fas fa-eye text-gray-500 mt-1 w-5"></i>
+                  <div class="flex-1 border-b border-gray-300 pb-3">
+                    <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Content you see</h3>
+                    <p class="text-gray-600 text-xs mt-1">
+                      Decide what you see on W3Connect based on your preferences like Topics and Interests.
+                    </p>
+                  </div>
+                  <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+                </a>
+
+                <!-- Mute and block -->
+                <a href="#" class="flex items-start space-x-3 group">
+                  <i class="fas fa-volume-mute text-gray-500 mt-1 w-5"></i>
+                  <div class="flex-1 border-b border-gray-300 pb-3">
+                    <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Mute and block</h3>
+                    <p class="text-gray-600 text-xs mt-1">
+                      Manage the accounts, words, and notifications that you've muted or blocked.
+                    </p>
+                  </div>
+                  <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+                </a>
+
+                <!-- Direct Messages -->
+                <a href="#" class="flex items-start space-x-3 group">
+                  <i class="fas fa-envelope text-gray-500 mt-1 w-5"></i>
+                  <div class="flex-1 border-b border-gray-300 pb-3">
+                    <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Direct Messages</h3>
+                    <p class="text-gray-600 text-xs mt-1">
+                      Manage who can message you directly.
+                    </p>
+                  </div>
+                  <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+                </a>
+
+                <!-- Discoverability and contacts -->
+                <a href="#" class="flex items-start space-x-3 group">
+                  <i class="fas fa-address-book text-gray-500 mt-1 w-5"></i>
+                  <div class="flex-1 border-b border-gray-300 pb-3">
+                    <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Discoverability and contacts</h3>
+                    <p class="text-gray-600 text-xs mt-1">
+                      Control your discoverability settings and manage contacts you've imported.
+                    </p>
+                  </div>
+                  <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+                </a>
+              </section>
+
+              <h2 class="font-bold text-lg mb-2 mt-8">Data sharing and personalization</h2>
+
+              <section class="flex flex-col space-y-6 max-w-xl mt-6">
+                <!-- Ads preferences -->
+                <a href="#" class="flex items-start space-x-3 group">
+                  <i class="fas fa-ad text-gray-500 mt-1 w-5"></i>
+                  <div class="flex-1 border-b border-gray-300 pb-3">
+                    <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Ads preferences</h3>
+                    <p class="text-gray-600 text-xs mt-1">
+                      Manage your ads experience on W3Connect.
+                    </p>
+                  </div>
+                  <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+                </a>
+
+                <!-- Inferred identity -->
+                <a href="#" class="flex items-start space-x-3 group">
+                  <i class="fas fa-fingerprint text-gray-500 mt-1 w-5"></i>
+                  <div class="flex-1 border-b border-gray-300 pb-3">
+                    <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Inferred identity</h3>
+                    <p class="text-gray-600 text-xs mt-1">
+                      Allow W3Connect to personalize your experience with your inferred activity, e.g. activity on devices you haven't used to log in to W3Connect.
+                    </p>
+                  </div>
+                  <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+                </a>
+
+                <!-- Data sharing with business partners -->
+                <a href="#" class="flex items-start space-x-3 group">
+                  <i class="fas fa-handshake text-gray-500 mt-1 w-5"></i>
+                  <div class="flex-1 border-b border-gray-300 pb-3">
+                    <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Data sharing with business partners</h3>
+                    <p class="text-gray-600 text-xs mt-1">
+                      Allow sharing of additional information with W3Connect's business partners.
+                    </p>
+                  </div>
+                  <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+                </a>
+
+                <!-- Location information -->
+                <a href="#" class="flex items-start space-x-3 group">
+                  <i class="fas fa-map-marker-alt text-gray-500 mt-1 w-5"></i>
+                  <div class="flex-1 border-b border-gray-300 pb-3">
+                    <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Location information</h3>
+                    <p class="text-gray-600 text-xs mt-1">
+                      Manage the location information W3Connect uses to personalize your experience.
+                    </p>
+                  </div>
+                  <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+                </a>
+              </section>
+            </div>
+            `,
+        notifications: `
+          <h2 class="font-bold text-lg mb-2">Notifications</h2>
+          <p class="text-gray-600 text-xs max-w-xl mb-6">
+            Set your notification preferences and email settings.
+          </p>
+        
+          <div class="max-w-xl">
+            <h2 class="font-bold text-lg mb-2">Filters</h2>
+            <p class="text-gray-600 text-xs max-w-xl mb-6">
+              Choose the notifications you'd like to see — and those you don't.
+            </p>
+
+            <section class="flex flex-col space-y-6 max-w-xl mb-8">
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-bell text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Email notifications</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    Manage what email notifications you receive.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-mobile-alt text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Push notifications</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    Control which push notifications you get on your devices.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+            </section>
+
+            <h2 class="font-bold text-lg mb-2">Preferences</h2>
+            <p class="text-gray-600 text-xs max-w-xl mb-6">
+              Select your preferences by notification type.
+            </p>
+
+            <section class="flex flex-col space-y-6 max-w-xl">
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-envelope text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Message preferences</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    Set how you want to be notified about new messages.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-users text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Group notifications</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    Choose how to be notified about group activities.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+            </section>
+          </div>
+          `,
+        display: `
+          <h2 class="font-bold text-lg mb-2">Accessibility & Display</h2>
+          <p class="text-gray-600 text-xs max-w-xl mb-6">
+            Customize fonts, themes, and accessibility settings.
+          </p>
+        
+          <div class="max-w-xl">
+            <!-- Accessibility Section -->
+            <h2 class="font-bold text-lg mb-2">Accessibility</h2>
+            <p class="text-gray-600 text-xs max-w-xl mb-6">
+              Manage aspects of your W3Connect experience such as limiting color contrast and motion.
+            </p>
+
+            <section class="flex flex-col space-y-6 max-w-xl mb-8">
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-universal-access text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Color contrast</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    Adjust color contrast settings for better visibility.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-running text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Motion reduction</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    Limit animations and motion effects.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+            </section>
+
+            <!-- Display Section -->
+            <h2 class="font-bold text-lg mb-2">Display</h2>
+            <p class="text-gray-600 text-xs max-w-xl mb-6">
+              Manage your font size, color, and background. These settings affect all the W3Connect accounts on this browser.
+            </p>
+
+            <section class="flex flex-col space-y-6 max-w-xl mb-8">
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-text-height text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Font size</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    Adjust the text size across W3Connect.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-palette text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Color theme</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    Choose between light, dark, or system default.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+            </section>
+
+            <!-- Languages Section -->
+            <h2 class="font-bold text-lg mb-2">Languages</h2>
+            <p class="text-gray-600 text-xs max-w-xl mb-6">
+              Manage which languages are used to personalize your W3Connect experience.
+            </p>
+
+            <!-- Data Usage Section -->
+            <h2 class="font-bold text-lg mb-2">Data usage</h2>
+            <p class="text-gray-600 text-xs max-w-xl mb-6">
+              Limit how X uses some of your network data on this device.
+            </p>
+
+            <!-- Keyboard Shortcuts Section -->
+            <h2 class="font-bold text-lg mb-2">Keyboard shortcuts</h2>
+            <section class="flex flex-col space-y-6 max-w-xl mt-4">
+              <a href="#" class="flex items-start space-x-3 group">
+                <i class="fas fa-keyboard text-gray-500 mt-1 w-5"></i>
+                <div class="flex-1 border-b border-gray-300 pb-3">
+                  <h3 class="font-semibold text-sm text-gray-900 group-hover:underline">Configure shortcuts</h3>
+                  <p class="text-gray-600 text-xs mt-1">
+                    Customize your keyboard navigation preferences.
+                  </p>
+                </div>
+                <i class="fas fa-chevron-right text-gray-500 mt-3"></i>
+              </a>
+            </section>
+          </div>
+          `,
+        help: `
+          <h2 class="font-bold text-lg mb-2">Help Center</h2>
+          <p class="text-gray-600 text-xs max-w-xl mb-6">
+            Get support and read FAQs or submit a support ticket.
+          </p>
+        `
+      };
+
+      container.innerHTML = contentMap[section] || "<p class='text-gray-500'>Section not found.</p>";
+    }
+  </script>
 </body>
 </html>
