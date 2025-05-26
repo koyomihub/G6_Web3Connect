@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MetaMask Connect UI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="bg-white w-full max-w-sm rounded-xl shadow-lg border p-6 font-sans">
+    <!-- Logo + Title -->
+    <div class="text-center">
+      <img src="image/metamask.png" alt="MetaMask" class="w-12 h-12 mx-auto mb-2"/>
+      <h1 class="text-xl font-semibold">MetaMask</h1>
+      <p class="text-sm text-gray-500 mt-1">Connect this website with MetaMask. <a href="https://support.metamask.io/start/getting-started-with-metamask" class="text-blue-500 hover:underline">Learn more</a></p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex justify-center mt-6 border-b border-gray-300">
+      <button class="px-4 py-2 text-sm font-medium text-black border-b-2 border-black">Accounts</button>
+      <button class="px-4 py-2 text-sm text-gray-400">Permissions</button>
+    </div>
+
+    <!-- Account Selection -->
+    <div class="bg-gray-50 rounded-lg p-4 mt-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="https://raw.githubusercontent.com/MetaMask/brand-resources/master/SVG/metamask-fox.svg" class="w-8 h-8 rounded-full bg-gray-200 p-1" alt="Account" />
+        <div>
+          <p class="text-sm font-semibold">Account 1</p>
+          <p class="text-xs text-gray-500">0x7e07c...45235</p>
+        </div>
+      </div>
+      <div class="text-right text-xs text-gray-700">
+        <p>$3.31 <span class="text-gray-500">USD</span></p>
+        <p class="text-purple-500">0.02 POL</p>
+      </div>
+    </div>
+
+    <!-- Edit Accounts -->
+    <div class="text-center mt-2">
+      <a href="#" class="text-sm text-blue-500 hover:underline">Edit accounts</a>
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex justify-between mt-6">
+        <!-- Cancel Button with Link -->
+        <a href="login.html" class="w-1/2 mr-2">
+            <button class="w-full border border-gray-300 py-2 rounded-full text-gray-600 hover:bg-gray-100 transition">
+            Cancel
+            </button>
+        </a>
+
+        <!-- Sign Button with Link -->
+        <a href="index.html" class="w-1/2 ml-2">
+            <button class="w-full bg-blue-600 text-white py-2 rounded-full hover:bg-blue-700 transition">
+            Sign
+            </button>
+        </a>
+    </div>
+  </div>
+
+</body>
+</html>

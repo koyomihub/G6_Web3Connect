@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>W3Connect - Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r flex flex-col justify-between sticky top-0 h-screen">
+      <div>
+        <div class="p-6 flex items-center space-x-3">
+          <img src="image/allan.jpg" class="w-10 h-10 rounded-full" alt="Avatar">
+          <div>
+            <p class="font-semibold" id="sidebarName">Allan</p>
+            <p class="text-sm text-gray-500">0x...45235</p>
+          </div>
+        </div>
+        <nav class="mt-4 space-y-4 pl-6">
+          <a href="index.html" class="block text-gray-800 hover:font-semibold">Dashboard</a>
+          <a href="profile.html" class="block text-gray-800 font-semibold">Profile</a>
+          <a href="earnings.html" class="block text-gray-800 hover:font-semibold">Earnings</a>
+          <a href="organization.html" class="block text-gray-800 hover:font-semibold">Organizations</a>
+          <a href="Settings.html" class="block text-gray-800 hover:font-semibold">Settings</a>
+        </nav>
+      </div>
+      <a href="login.html"><div class="p-6">
+        <button class="w-full bg-red-400 hover:bg-red-500 text-white py-2 rounded">Disconnect Wallet</button>
+      </div></a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+      <div class="flex items-center justify-between mb-6">
+        <h1 class="text-2xl font-bold text-gray-800">W3Connect</h1>
+        <div class="flex items-center space-x-2">
+          <span class="text-sm text-gray-500">LANG: ENG</span>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" class="sr-only peer">
+            <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-gray-600 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Profile Section -->
+      <section class="mb-8">
+        <div class="flex items-center space-x-4">
+          <img src="image/allan.jpg" class="w-16 h-16 rounded-lg" alt="User Avatar">
+          <div>
+            <h2 class="text-xl font-bold" id="profileName">Allan</h2>
+            <p class="text-sm text-gray-500">0x...45235</p>
+            <p class="text-sm mt-1" id="profileBio">Blockchain enthusiast and developer</p>
+            <p class="text-sm text-gray-700 mt-1">25 followers • 10 following</p>
+          </div>
+          <button 
+            class="ml-auto px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded text-sm"
+            onclick="openEditProfileModal()"
+          >
+            Edit Info
+          </button>
+        </div>
+      </section>
+
+      <!-- Create article input -->
+      <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+        <div class="flex items-start space-x-3">
+          <img src="image/allan.jpg" class="w-10 h-10 rounded-full mt-1" alt="User Avatar">
+          <div class="flex-1">
+            <input 
+              id="postInput"
+              type="text" 
+              placeholder="Create an article..." 
+              class="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-2"
+            >
+            <div class="flex items-center justify-between">
+              <div class="flex space-x-2">
+                <button 
+                  id="addPhotoBtn"
+                  class="text-gray-500 hover:text-blue-500 p-1 rounded-full hover:bg-gray-100"
+                  onclick="document.getElementById('postImageInput').click()"
+                  title="Add image"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </button>
+                <input type="file" id="postImageInput" class="hidden" accept="image/*">
+              </div>
+              <button 
+                id="postButton"
+                class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded text-sm font-medium transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled
+              >
+                Post
+              </button>
+            </div>
+            <div id="imagePreviewContainer" class="mt-2 hidden relative">
+              <img id="imagePreview" class="max-w-full max-h-48 rounded-lg" src="" alt="Preview">
+              <button 
+                onclick="removeImagePreview()"
+                class="absolute top-1 right-1 bg-black bg-opacity-50 text-white rounded-full p-1 hover:bg-opacity-70"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Articles Container -->
+      <div id="articlesContainer">
+        <!-- Existing Post Section -->
+        <div class="bg-white p-6 rounded shadow-sm mb-4">
+          <div class="flex items-center space-x-3 mb-2">
+            <img src="image/allan.jpg" class="w-10 h-10 rounded-full" alt="User Avatar">
+            <div>
+              <p class="font-medium post-username">Allan</p>
+              <p class="text-sm text-gray-500">0x...45235</p>
+            </div>
+          </div>
+          <p class="text-gray-700 mb-2">
+            Calling out all the Ronin projects out there who's interested in collaborating with @Kttyworld's Swap, Lock, & Drip Program! Just reach out to their Discord server if your project/community is willing to do this. Details are in the photo below:
+          </p>
+          <img src="image/tenor.gif" class="w-full rounded-lg" alt="KTTY Post" />
+          
+          <div class="mt-4 flex space-x-4 text-sm text-gray-500">
+            <button
+                class="like-btn flex items-center space-x-1 hover:text-blue-500 transition-colors"
+                data-liked="false"
+                data-post-id="post1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+              </svg>
+              <span>Like</span>
+              <span class="like-count hidden">0</span>
+            </button>
+
+            <button
+                class="comment-btn flex items-center space-x-1 hover:text-gray-700 transition-colors"
+                data-post-id="post1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+              </svg>
+              <span>Comment</span>
+            </button>
+
+            <button
+                class="share-btn flex items-center space-x-1 hover:text-gray-700 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+              </svg>
+              <span>Share</span>
+            </button>
+          </div>
+          
+          <!-- Comments section for this post -->
+          <div id="comments-post1" class="mt-4 space-y-3 hidden">
+            <!-- Comments will appear here -->
+          </div>
+          
+          <!-- Comment input for this post -->
+          <div id="comment-input-post1" class="mt-4 hidden">
+            <textarea
+                class="w-full p-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400"
+                placeholder="Write a comment..."
+                rows="2"
+            ></textarea>
+            <div class="flex justify-end mt-2 space-x-2">
+                <button
+                    class="px-3 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300 transition-colors"
+                    onclick="closeCommentInput('post1')"
+                >
+                    Cancel
+                </button>
+                <button
+                    class="px-3 py-1 text-sm bg-gray-800 text-white rounded hover:bg-gray-700 transition-colors"
+                    onclick="postComment('post1')"
+                >
+                    Post
+                </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Edit Profile Modal -->
+  <div id="editProfileModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg p-6 w-full max-w-md">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold">Edit Profile</h3>
+        <button onclick="closeEditProfileModal()" class="text-gray-500 hover:text-gray-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+          <input 
+            type="text" 
+            id="editNameInput" 
+            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500"
+            value="Allan"
+          >
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Avatar URL</label>
+          <input 
+            type="text" 
+            id="editAvatarInput" 
+            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500"
+            value="image/allan.jpg"
+          >
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Bio</label>
+          <textarea 
+            id="editBioInput" 
+            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500"
+            rows="3"
+          >Blockchain enthusiast and developer</textarea>
+        </div>
+      </div>
+      
+      <div class="mt-6 flex justify-end space-x-3">
+        <button 
+          onclick="closeEditProfileModal()" 
+          class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded"
+        >
+          Cancel
+        </button>
+        <button 
+          onclick="saveProfileChanges()" 
+          class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
+        >
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Post functionality
+    const postInput = document.getElementById('postInput');
+    const postButton = document.getElementById('postButton');
+    const articlesContainer = document.getElementById('articlesContainer');
+    const postImageInput = document.getElementById('postImageInput');
+    const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+    const imagePreview = document.getElementById('imagePreview');
+    let selectedImageFile = null;
+  
+    postInput.addEventListener('input', function() {
+      postButton.disabled = this.value.trim() === '' && !selectedImageFile;
+    });
+    
+    postImageInput.addEventListener('change', function(e) {
+      if (e.target.files && e.target.files[0]) {
+        selectedImageFile = e.target.files[0];
+        const reader = new FileReader();
+        
+        reader.onload = function(event) {
+          imagePreview.src = event.target.result;
+          imagePreviewContainer.classList.remove('hidden');
+          postButton.disabled = postInput.value.trim() === '' && !selectedImageFile;
+        };
+        
+        reader.readAsDataURL(selectedImageFile);
+      }
+    });
+    
+    function removeImagePreview() {
+      imagePreview.src = '';
+      imagePreviewContainer.classList.add('hidden');
+      postImageInput.value = '';
+      selectedImageFile = null;
+      postButton.disabled = postInput.value.trim() === '' && !selectedImageFile;
+    }
+  
+    postButton.addEventListener('click', function() {
+      const articleText = postInput.value.trim();
+
+      if (articleText !== '' || selectedImageFile) {
+        const articleId = `article-${Date.now()}`;
+        const postId = `post-${Date.now()}`;
+        
+        const article = document.createElement('div');
+        article.className = "bg-white p-6 rounded shadow-sm mb-4";
+        
+        let imageContent = '';
+        if (selectedImageFile) {
+          imageContent = `<img src="${imagePreview.src}" class="w-full rounded-lg mt-2" alt="Post image">`;
+        }
+        
+        article.innerHTML = `
+          <div class="flex items-center space-x-3 mb-2">
+            <img src="image/allan.jpg" class="w-10 h-10 rounded-full" alt="User Avatar">
+            <div>
+              <p class="font-medium post-username">${document.getElementById('profileName').textContent}</p>
+              <p class="text-sm text-gray-500">0x...45235</p>
+            </div>
+          </div>
+          <p class="text-gray-700 mb-2">${articleText}</p>
+          ${imageContent}
+
+          <div class="mt-4 flex space-x-4 text-sm text-gray-500">
+            <button
+                class="like-btn flex items-center space-x-1 hover:text-blue-500 transition-colors"
+                data-liked="false"
+                data-post-id="${postId}"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+              </svg>
+              <span>Like</span>
+              <span class="like-count hidden">0</span>
+            </button>
+            <button
+                class="comment-btn flex items-center space-x-1 hover:text-gray-700 transition-colors"
+                data-post-id="${postId}"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+              </svg>
+              <span>Comment</span>
+            </button>
+            <button
+                class="share-btn flex items-center space-x-1 hover:text-gray-700 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+              </svg>
+              <span>Share</span>
+            </button>
+          </div>
+          
+          <!-- Comments section for this post -->
+          <div id="comments-${postId}" class="mt-4 space-y-3 hidden">
+            <!-- Comments will appear here -->
+          </div>
+          
+          <!-- Comment input for this post -->
+          <div id="comment-input-${postId}" class="mt-4 hidden">
+            <textarea
+                class="w-full p-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400"
+                placeholder="Write a comment..."
+                rows="2"
+            ></textarea>
+            <div class="flex justify-end mt-2 space-x-2">
+                <button
+                    class="px-3 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300 transition-colors"
+                    onclick="closeCommentInput('${postId}')"
+                >
+                    Cancel
+                </button>
+                <button
+                    class="px-3 py-1 text-sm bg-gray-800 text-white rounded hover:bg-gray-700 transition-colors"
+                    onclick="postComment('${postId}')"
+                >
+                    Post
+                </button>
+            </div>
+          </div>
+        `;
+
+        // Add article to top
+        articlesContainer.prepend(article);
+
+        // Reset input and preview
+        postInput.value = '';
+        removeImagePreview();
+        postButton.disabled = true;
+
+        // Add event listeners for the new post
+        setupPostInteractions(postId);
+      }
+    });
+
+    // Setup event listeners for post interactions
+    function setupPostInteractions(postId) {
+      const likeBtn = document.querySelector(`button[data-post-id="${postId}"].like-btn`);
+      const commentBtn = document.querySelector(`button[data-post-id="${postId}"].comment-btn`);
+      const shareBtn = document.querySelector(`button[data-post-id="${postId}"].share-btn`);
+
+      if (likeBtn) {
+        likeBtn.addEventListener('click', () => {
+          const liked = likeBtn.getAttribute('data-liked') === 'true';
+          likeBtn.setAttribute('data-liked', !liked);
+          
+          const likeText = likeBtn.querySelector('span');
+          const likeCount = likeBtn.querySelector('.like-count');
+          
+          if (liked) {
+            likeBtn.classList.remove('text-blue-500');
+            likeText.textContent = 'Like';
+            likeCount.textContent = parseInt(likeCount.textContent) - 1;
+          } else {
+            likeBtn.classList.add('text-blue-500');
+            likeText.textContent = 'Liked';
+            likeCount.textContent = parseInt(likeCount.textContent || '0') + 1;
+          }
+          
+          likeCount.classList.toggle('hidden', parseInt(likeCount.textContent) <= 0);
+        });
+      }
+
+      if (commentBtn) {
+        commentBtn.addEventListener('click', () => {
+          const commentInput = document.getElementById(`comment-input-${postId}`);
+          commentInput.classList.toggle('hidden');
+        });
+      }
+
+      if (shareBtn) {
+        shareBtn.addEventListener('click', sharePost);
+      }
+    }
+
+    // Setup initial post interactions
+    document.querySelectorAll('.like-btn').forEach(btn => {
+      const postId = btn.getAttribute('data-post-id');
+      setupPostInteractions(postId);
+    });
+
+    // Comment functionality
+    function openCommentInput(postId) {
+      const commentInput = document.getElementById(`comment-input-${postId}`);
+      commentInput.classList.remove('hidden');
+    }
+
+    function closeCommentInput(postId) {
+      const commentInput = document.getElementById(`comment-input-${postId}`);
+      commentInput.classList.add('hidden');
+    }
+
+    function postComment(postId) {
+      const commentInput = document.querySelector(`#comment-input-${postId} textarea`);
+      const commentsSection = document.getElementById(`comments-${postId}`);
+
+      if (commentInput.value.trim() !== '') {
+        const commentId = `comment-${Date.now()}`;
+        const commentElement = document.createElement('div');
+        commentElement.className = 'bg-gray-50 p-3 rounded-lg relative';
+        commentElement.innerHTML = `
+          <div class="flex items-center mb-1">
+            <img src="image/allan.jpg" class="rounded-full w-6 h-6 mr-2" alt="user" />
+            <span class="text-sm font-medium">${document.getElementById('profileName').textContent}</span>
+          </div>
+          <p class="text-sm comment-text">${commentInput.value}</p>
+          <div class="absolute top-2 right-2 space-x-2">
+            <button class="text-xs text-gray-500 hover:text-gray-700 focus:outline-none" onclick="editComment('${commentId}')">Edit</button>
+            <button class="text-xs text-red-500 hover:text-red-700 focus:outline-none" onclick="deleteComment('${commentId}')">Delete</button>
+          </div>
+          <input type="hidden" id="commentId" value="${commentId}">
+        `;
+
+        commentsSection.prepend(commentElement);
+        commentsSection.classList.remove('hidden');
+
+        commentInput.value = '';
+        closeCommentInput(postId);
+      }
+    }
+
+    function deleteComment(commentId) {
+      const commentElement = document.querySelector(`input[value="${commentId}"]`)?.parentElement;
+      if (commentElement) {
+        commentElement.remove();
+      }
+    }
+
+    function editComment(commentId) {
+      const commentElement = document.querySelector(`input[value="${commentId}"]`)?.parentElement;
+      if (commentElement) {
+        const commentTextElement = commentElement.querySelector('.comment-text');
+        const currentText = commentTextElement.textContent;
+        
+        // Replace text with textarea for editing
+        commentTextElement.innerHTML = `
+          <textarea class="w-full p-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400 edit-comment-textarea" rows="2">${currentText}</textarea>
+          <div class="flex justify-end mt-2 space-x-2">
+            <button class="px-2 py-1 text-xs bg-gray-200 rounded hover:bg-gray-300 transition-colors" onclick="cancelEdit('${commentId}', '${currentText.replace(/'/g, "\\'")}')">
+              Cancel
+            </button>
+            <button class="px-2 py-1 text-xs bg-gray-800 text-white rounded hover:bg-gray-700 transition-colors" onclick="saveEdit('${commentId}')">
+              Save
+            </button>
+          </div>
+        `;
+      }
+    }
+
+    function cancelEdit(commentId, originalText) {
+      const commentElement = document.querySelector(`input[value="${commentId}"]`)?.parentElement;
+      if (commentElement) {
+        const commentTextElement = commentElement.querySelector('.comment-text');
+        // Restore original text
+        commentTextElement.textContent = originalText;
+      }
+    }
+
+    function saveEdit(commentId) {
+      const commentElement = document.querySelector(`input[value="${commentId}"]`)?.parentElement;
+      if (commentElement) {
+        const textarea = commentElement.querySelector('.edit-comment-textarea');
+        const newText = textarea.value.trim();
+        
+        if (newText !== '') {
+          const commentTextElement = commentElement.querySelector('.comment-text');
+          // Update with new text
+          commentTextElement.textContent = newText;
+        }
+      }
+    }
+
+    // Profile edit functionality
+    function openEditProfileModal() {
+      const modal = document.getElementById('editProfileModal');
+      modal.classList.remove('hidden');
+    }
+
+    function closeEditProfileModal() {
+      const modal = document.getElementById('editProfileModal');
+      modal.classList.add('hidden');
+    }
+
+    function saveProfileChanges() {
+      const nameInput = document.getElementById('editNameInput');
+      const avatarInput = document.getElementById('editAvatarInput');
+      const bioInput = document.getElementById('editBioInput');
+      
+      // Update profile name everywhere
+      const newName = nameInput.value;
+      document.getElementById('profileName').textContent = newName;
+      document.getElementById('sidebarName').textContent = newName;
+      document.querySelectorAll('.post-username').forEach(el => {
+        el.textContent = newName;
+      });
+      
+      // Update avatar everywhere
+      const newAvatar = avatarInput.value;
+      document.querySelectorAll('img[alt="User Avatar"], img[alt="Avatar"]').forEach(img => {
+        img.src = newAvatar;
+      });
+      
+      // Update bio
+      document.getElementById('profileBio').textContent = bioInput.value;
+      
+      // In a real app, you would save these changes to a database
+      console.log('Profile changes saved:', {
+        name: newName,
+        avatar: newAvatar,
+        bio: bioInput.value
+      });
+      
+      closeEditProfileModal();
+    }
+
+    // General share functionality
+    function sharePost() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Check out this post on W3Connect',
+          text: 'Check out this interesting content!',
+          url: window.location.href,
+        }).catch(err => console.log('Error sharing:', err));
+      } else {
+        const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Check out this post on W3Connect')}&url=${encodeURIComponent(window.location.href)}`;
+        window.open(shareUrl, '_blank');
+      }
+    }
+  </script>
+</body>
+</html>
